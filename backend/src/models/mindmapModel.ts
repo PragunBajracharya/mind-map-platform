@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const mindmapSchema = new mongoose.Schema({
     title: {type: String, required: true},
@@ -16,4 +16,4 @@ const mindmapSchema = new mongoose.Schema({
 });
 
 const Mindmap = mongoose.model('Mindmap', mindmapSchema);
-module.exports = Mindmap;
+export default Mindmap;

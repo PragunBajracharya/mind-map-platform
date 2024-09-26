@@ -1,6 +1,8 @@
-const User = require("../models/userModel");
+import User from "../models/userModel";
 
-exports.getUsers = async (req, res) => {
+import { Request, Response } from "express";
+
+export const getUsers = async (req: Request, res: Response) => {
 	try {
 		const users = await User.find();
 		res.status(200).json({
@@ -13,12 +15,12 @@ exports.getUsers = async (req, res) => {
 	} catch (error) {
 		res.status(400).json({
 			status: "fail",
-			message: error.message,
+			message: (error as Error).message,
 		});
 	}
 };
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req: Request, res: Response) => {
 	try {
 		const userExists = await User.findOne({ email: req.body.email });
 		if (userExists) {
@@ -38,7 +40,7 @@ exports.createUser = async (req, res) => {
 	} catch (error) {
 		res.status(400).json({
 			status: "fail",
-			message: error.message,
+			message: (error as Error).message,
 		});
 	}
 };

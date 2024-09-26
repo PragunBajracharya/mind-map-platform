@@ -39,4 +39,4 @@ function getRouteList(app) {
 	app._router.stack.forEach(print.bind(null, []));
 }
 
-module.exports = getRouteList;
+export default getRouteList;

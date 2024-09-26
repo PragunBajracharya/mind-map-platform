@@ -1,6 +1,6 @@
-const { body } = require("express-validator");
+import { body } from "express-validator";
 
-exports.userValidation = [
+export const userValidation = [
 	body("name")
 		.isLength({ min: 3 })
 		.withMessage("Name must be at least 3 characters long"),
