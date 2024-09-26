@@ -1,8 +1,10 @@
-const User = require("../models/userModel");
-const bcrypt = require("bcryptjs");
-const generateToken = require("../utils/jwtHelper");
+import User from "../models/userModel";
+import bcrypt from "bcryptjs";
+import generateToken from "../utils/jwtHelper";
+import { Request, Response } from "express";
+import { ReadPosition } from "fs";
 
-exports.register = async (req, res) => {
+export const register = async (req: Request, res: Response) => {
 	const { name, email, password } = req.body;
 
 	try {
@@ -30,7 +32,7 @@ exports.register = async (req, res) => {
 	}
 };
 
-exports.login = async (req, res) => {
+export const login = async (req: Request, res: Response) => {
 	const { email, password } = req.body;
 
 	try {
@@ -61,7 +63,7 @@ exports.login = async (req, res) => {
 	}
 };
 
-exports.signout = (req, res) => {
+export const signout = (req: Request, res: Response) => {
 	res.cookie("token", "", {
 		httpOnly: true,
 		expires: new Date(0),
